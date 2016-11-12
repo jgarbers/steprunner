@@ -1,22 +1,23 @@
 package com.jgarbers;
 
 /**
- * Created by Afterburner 2 on 10/31/2016.
+ * Created by ECR FTC 11096 on 10/31/2016.
  */
 public class WaitStep extends  Step {
 
+    @Override
     public void start(Robot r) {
         super.start(r);
     }
 
-    ;
+    @Override
+    public Boolean run() {
+        return super.run();
+    }
 
-    public  void stop(Robot r){
-        super.stop(r);
+    @Override
+    public void stop() {
+        super.stop();
     };
 
-
-    public Boolean run(long elapsed) {
-        return super.run(elapsed);
-    }
 }
