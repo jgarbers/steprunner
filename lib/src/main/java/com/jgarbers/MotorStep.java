@@ -11,8 +11,8 @@ public class MotorStep extends  Step {
     }
 
     @Override
-    public Boolean run() {
-        return super.run();
+    public void run() {
+         super.run();
     }
 
     @Override

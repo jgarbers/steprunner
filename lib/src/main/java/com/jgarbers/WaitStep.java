@@ -2,22 +2,31 @@ package com.jgarbers;
 
 /**
  * Created by ECR FTC 11096 on 10/31/2016.
+ *
+ * Step that just does nothing for a given number of milliseconds.
  */
-public class WaitStep extends  Step {
+
+
+public class WaitStep extends Step {
+
+    protected long waitTime = 0;
+
+    public WaitStep(long theWaitTime) {
+        waitTime = theWaitTime;
+    }
 
     @Override
     public void start(Robot r) {
         super.start(r);
+        log(String.format("waiting %d ms", waitTime));
     }
 
     @Override
-    public Boolean run() {
-        return super.run();
+    public void run() {
+        super.run();
+        if (elapsedTimeMillis() >= waitTime) {
+            setDone();
+        }
     }
-
-    @Override
-    public void stop() {
-        super.stop();
-    };
 
 }

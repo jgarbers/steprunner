@@ -11,4 +11,10 @@ package com.jgarbers;
 
 public class Robot {
 
+    /*
+        Return current time in milliseconds.
+     */
+    public long currentTimeMillis() {
+        return System.currentTimeMillis();
+    }
 }
