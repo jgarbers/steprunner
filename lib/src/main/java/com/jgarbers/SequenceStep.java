@@ -9,15 +9,15 @@ import java.util.List;
  * Runs a set of steps one at a time.
  */
 
-public class StepRunner extends Step {
+public class SequenceStep extends Step {
     protected List<Step> stepList;
     protected Integer currentStep = 0;
 
-    public StepRunner(List<Step> theStepList) {
+    public SequenceStep(List<Step> theStepList) {
         stepList = theStepList;
     }
 
-    /* When StepRunner starts, it starts the first step in its list. */
+    /* When SequenceStep starts, it starts the first step in its list. */
 
     public void start(Robot r) {
         super.start(r);
@@ -26,12 +26,12 @@ public class StepRunner extends Step {
         //  QUESTION: Why do we have to pass the Robot parameter to
         //  the Step in our list?
         if (!atEnd()) {
-            stepList.get(currentStep).start(r);
+            stepList.get(currentStep).start(robot);
         }
 
     }
 
-    /* When StepRunner runs, it runs the current step in its list. If that
+    /* When SequenceStep runs, it runs the current step in its list. If that
         step is done, it starts the next step -- if there is one. */
 
     public void run() {
@@ -50,7 +50,7 @@ public class StepRunner extends Step {
         }
     }
 
-    /* When StepRunner is told to stop, stop our current Step if it's
+    /* When SequenceStep is told to stop, stop our current Step if it's
         running, and stop ourselves.
      */
 
