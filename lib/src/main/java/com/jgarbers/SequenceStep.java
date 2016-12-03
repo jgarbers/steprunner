@@ -23,9 +23,7 @@ public class SequenceStep extends Step {
         super.start(r);
 
         // If we don't have an empty list, start the first step.
-        //  QUESTION: Why do we have to pass the Robot parameter to
-        //  the Step in our list?
-        if (!atEnd()) {
+        if (stepsLeft()) {
             stepList.get(currentStep).start(robot);
         }
 
@@ -36,45 +34,37 @@ public class SequenceStep extends Step {
 
     public void run() {
         super.run();
-        // QUESTION: Do we need to check for atEnd or isRunning here?
 
-        Step s = stepList.get(currentStep);
-        if (s.isRunning()) {
-            s.run();
+        Step step = stepList.get(currentStep);
+        if (step.isRunning()) {
+            step.run();
         } else {
-            s.stop();
             currentStep++;
-            if (!atEnd()) {
+            if (stepsLeft()) {
                 stepList.get(currentStep).start(robot);
+            } else {
+                stop();
             }
         }
     }
 
-    /* When SequenceStep is told to stop, stop our current Step if it's
-        running, and stop ourselves.
+    /* When SequenceStep is told to stop, stop our current Step
+        and ourselves.
      */
 
     public void stop() {
-        super.stop();
-        if (!atEnd()) {
-            Step s = stepList.get(currentStep);
-            if (s.isRunning()) {
-                s.stop();
-            }
+        if (stepsLeft()) {
+            stepList.get(currentStep).stop();
         }
+        super.stop();
     }
 
 
     /*
-        Check to see if we're out of steps to run. If so,
-        set running to false and return true.
+        Check to see if we're out of steps to run.
     */
-    protected Boolean atEnd() {
-        if (currentStep >= stepList.size()) {
-            setDone();
-            return true;
-        }
-        return false;
+    protected Boolean stepsLeft() {
+        return (currentStep < stepList.size());
     }
 
 }

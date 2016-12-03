@@ -19,8 +19,6 @@ public class Step {
         robot = r;
         running = true;
         startTime = robot.currentTimeMillis();
-        // QUESTION: Why do we do the log after the other instructions
-        // and not before?
         log("start");
     }
 
@@ -45,18 +43,8 @@ public class Step {
         cleanup, etc.
      */
     public void stop() {
-        log("stop");
-        setDone();
-    }
-
-    /*
-        Sets us to the not-running state. We encapsulate this
-        in case we want to have multiple states in the future.
-     */
-    protected void setDone() {
-        // QUESTION: Why do we check 'running' here?
-        if (running) {
-            log("done");
+        if (isRunning()) {
+            log("stop");
             running = false;
         }
     }
@@ -69,7 +57,6 @@ public class Step {
     protected long elapsedTimeMillis() {
         return robot.currentTimeMillis() - startTime;
     }
-
 
 
     /*

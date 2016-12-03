@@ -7,9 +7,14 @@ public class StepTest {
         System.out.println("Starting Step Test");
         Robot r = new Robot();
 
-        StepRunner main = new StepRunner(Arrays.asList(
-            new WaitStep(50),
-            new WaitStep(25)
+//        SequenceStep main = new SequenceStep(Arrays.asList(
+//            new WaitStep(50),
+//            new WaitStep(25)
+//        ));
+
+        UntilOneDoneStep main = new UntilOneDoneStep(Arrays.asList(
+            new WaitStep(500),
+            new WaitStep(200)
         ));
 
         main.start(r);

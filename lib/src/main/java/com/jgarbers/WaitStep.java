@@ -6,7 +6,6 @@ package com.jgarbers;
  * Step that just does nothing for a given number of milliseconds.
  */
 
-
 public class WaitStep extends Step {
 
     protected long waitTime = 0;
@@ -25,7 +24,7 @@ public class WaitStep extends Step {
     public void run() {
         super.run();
         if (elapsedTimeMillis() >= waitTime) {
-            setDone();
+            stop();
         }
     }
 

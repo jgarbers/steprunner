@@ -30,14 +30,13 @@
 ### SequenceStep(list of steps)
 
 ### ParallelStep(list of steps)
-- run until ALL are done (AND gate)
-- run until ANY are done (OR gate)
+    UntilAllDoneStep(List<Step> theStepList)
+    UntilOneDoneStep(List<Step> theStepList)
 
-### GoToTheWhiteLineStep
 
-### DriveStep(speed, heading)
+### DriveStep(speed (inches/sec?), heading... distance?)
 
-### TurnStep(heading? use gyro?)
+### TurnStep(speed (degrees/sec? use gyro?)
 
 ### SensorStep(sensor reading?)
 
