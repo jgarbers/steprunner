@@ -1,4 +1,4 @@
-package com.jgarbers.steprunner;
+package com.ecrftc.steprunner;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
